@@ -1,13 +1,15 @@
 body{
-  height:100vh;
   display:flex;
+  margin:0;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-image: url("confetti.b1fca86a.jpeg");
-  background-size:1000px
+  background-size:1000px;
 }
 
 h1{
+  display:flex;
   font-size: 45px;
   color:salmon;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -18,8 +20,8 @@ h1{
   justify-content: center;
   flex-direction: column;
   align-items:center;
-  height:60%;
-  width:70%;
+  height:600px;
+  width:60%;
   background-color: whitesmoke;
   border-radius: 10px;
 }
@@ -32,6 +34,7 @@ h1{
 }
 
 button{
+  display:flex;
   width:150px;
   height:50px;
   margin:20px;
@@ -44,23 +47,50 @@ button{
 }
 
 #next{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: purple;
 }
 
 .score{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .bad{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color:red;
 }
 
 .ok{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color:orange;
 }
 
 .great{
+  align-items: center;
+  justify-content: center;
+  display: flex;
   background-color:green;
 }
+
+#weather{
+  display:flex;
+  align-self:flex-start;
+  align-items:center;
+  justify-content: space-around;
+  background-color: white;
+  width: 200px;
+  height: 50px;
+  margin-top:20px;
+  margin-bottom:100px;
+}
+
+
 /*# sourceMappingURL=index.a4e33057.css.map */

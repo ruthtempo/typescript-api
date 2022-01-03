@@ -1,5 +1,5 @@
 function getJoke() {
-    fetch('https://icanhazdadjoke.com/', {
+    if (Math.random() > 0.5) fetch('https://icanhazdadjoke.com/', {
         headers: {
             Accept: "application/json"
         }
@@ -7,6 +7,11 @@ function getJoke() {
     ).then((data)=>{
         document.getElementById("joke").innerHTML = `"${data.joke}"`;
         joke = data.joke;
+    });
+    else fetch('https://api.chucknorris.io/jokes/random').then((response)=>response.json()
+    ).then((data)=>{
+        document.getElementById("joke").innerHTML = `"${data.value}"`;
+        joke = data.value;
     });
 }
 const reportJokes = [];
@@ -33,5 +38,10 @@ document.getElementById("next").addEventListener("click", function() {
         console.log(reportJokes);
     }
 });
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Barcelona&units=metric&apikey=2100050340613191cdf788f92f391040").then((response)=>response.json()
+).then((data)=>{
+    document.querySelector(".degrees").innerHTML = data.main.temp;
+    document.querySelector(".weather-descript").innerHTML = data.weather[0].description;
+}).then(console.log);
 
 //# sourceMappingURL=index.eddff976.js.map
