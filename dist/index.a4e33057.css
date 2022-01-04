@@ -4,14 +4,17 @@ body{
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url("confetti.b1fca86a.jpeg");
-  background-size:1000px;
+  background-size:1500px;
+  background-image: url("blob1.b553f6d3.svg");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 25%;
 }
 
 h1{
   display:flex;
-  font-size: 45px;
-  color:salmon;
+  font-size: 40px;
+  color:whitesmoke;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -21,16 +24,17 @@ h1{
   flex-direction: column;
   align-items:center;
   height:600px;
-  width:60%;
-  background-color: whitesmoke;
+  width:70%;
   border-radius: 10px;
 }
 
 #joke{
   padding:20px;
+  width:50%;
   font-size: 25px;
   display: flex;
   justify-content: center;
+  color:whitesmoke
 }
 
 button{
@@ -80,17 +84,57 @@ button{
   background-color:green;
 }
 
+/*weather box and icon */
+
 #weather{
   display:flex;
   align-self:flex-start;
   align-items:center;
   justify-content: space-around;
-  background-color: white;
+  background-color: aliceblue;
   width: 200px;
-  height: 50px;
+  height: 100px;
   margin-top:20px;
   margin-bottom:100px;
+  margin-left: 10px;;
+  border-radius: 10px;
+  font-size: 25px;
 }
 
+.icon{
+  width:40px;
+  height:40px;
+ }
 
+.blob1{
+  background-image: url("blob1.b553f6d3.svg");
+}
+
+.blob2{
+  background-image: url("blob2.a2ce1d4f.svg");
+}
+
+.blob3{
+  background-image: url("blob3.6167e621.svg");
+}
+
+.blob4{
+  background-image: url("blob4.e0b75418.svg");
+}
+
+/* blob decos */
+
+.blob-deco1{
+  position: absolute;
+  left:85%;
+  top:10%;
+  width:20%;
+}
+
+.blob-deco2{
+  position: absolute;
+  right:80%;
+  bottom:10%;
+  width:20%;
+}
 /*# sourceMappingURL=index.a4e33057.css.map */

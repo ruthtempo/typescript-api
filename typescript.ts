@@ -1,5 +1,9 @@
 function getJoke():void{
-
+  const blobs =["blob1", "blob2", "blob3", "blob4"]
+  let randomIndex = Math.floor( Math.random() * blobs.length)
+  
+  console.log(randomIndex)
+  
   if(Math.random() > .5){
     fetch('https://icanhazdadjoke.com/', {
     headers:{
@@ -10,6 +14,9 @@ function getJoke():void{
     .then(data => {
       document.getElementById("joke").innerHTML = `"${data.joke}"`
       joke= data.joke
+      let blop = document.querySelector("body")
+      console.log(blop)
+      blop.className = blobs[randomIndex]
     })
   }else{
     fetch('https://api.chucknorris.io/jokes/random')
@@ -17,9 +24,12 @@ function getJoke():void{
     .then(data => {
       document.getElementById("joke").innerHTML = `"${data.value}"`
       joke= data.value
+      document.querySelector("body").className = blobs[randomIndex]
+      
     })
   }
 }
+
 
 
 
@@ -57,14 +67,15 @@ document.getElementById("next").addEventListener("click", function () {
 
 
 
-
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Barcelona&units=metric&apikey=2100050340613191cdf788f92f391040")
   .then(response =>response.json())
   .then( data => {
-          document.querySelector(".degrees").innerHTML = data.main.temp  
-          document.querySelector(".weather-descript").innerHTML = data.weather[0].description
+          const degrees= data.main.temp
+          const rounded = Math.floor(degrees)
+          document.querySelector(".degrees").innerHTML = `${rounded} ºC`
+          document.querySelector(".weather-descript").innerHTML = `<img class="icon" src ="http://openweathermap.org/img/wn/${data.weather[0].icon}.png">`
         })
-  .then (console.log)
+
 
 
 
