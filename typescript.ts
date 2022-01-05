@@ -1,8 +1,21 @@
-function getJoke():void{
-  const blobs =["blob1", "blob2", "blob3", "blob4"]
-  let randomIndex = Math.floor( Math.random() * blobs.length)
-  
-  console.log(randomIndex)
+type DadJokeResponse ={
+  id: string;
+  joke: string;
+  status: number;
+}
+
+type ChucknorrisResponse ={
+  created_at:string;
+  icon_url:string;
+  id:string;
+  updated_at:string;
+  url:string;
+  value:string;
+}
+
+function getJoke(){
+  const blobs: string[] =["blob1", "blob2", "blob3", "blob4"]
+  let randomIndex:number = Math.floor( Math.random() * blobs.length)
   
   if(Math.random() > .5){
     fetch('https://icanhazdadjoke.com/', {
@@ -11,7 +24,7 @@ function getJoke():void{
       }
     })
     .then(response => response.json())
-    .then(data => {
+    .then((data: DadJokeResponse) => {
       document.getElementById("joke").innerHTML = `"${data.joke}"`
       joke= data.joke
       let blop = document.querySelector("body")
@@ -21,7 +34,7 @@ function getJoke():void{
   }else{
     fetch('https://api.chucknorris.io/jokes/random')
     .then(response => response.json())
-    .then(data => {
+    .then((data:ChucknorrisResponse) => {
       document.getElementById("joke").innerHTML = `"${data.value}"`
       joke= data.value
       document.querySelector("body").className = blobs[randomIndex]
@@ -31,12 +44,16 @@ function getJoke():void{
 }
 
 
+type ReportedJoke ={
+  joke:string;
+  date:Date;
+  score:number;
+}
 
-
-const reportJokes=[];
+const reportJokes:ReportedJoke[] = [];
 let joke:string 
 let score:number = 0
-const date = new Date()
+
 
 document.querySelector(".bad").addEventListener("click",function(){
  score = 1
@@ -53,28 +70,34 @@ document.querySelector(".ok").addEventListener("click",function(){
 
 document.getElementById("next").addEventListener("click", function () {
   getJoke()
-  if(joke){
-    reportJokes.push(
-      {joke: joke,
-      date: date.toISOString(),
-      score: score
-      }
-    )
+  if(joke){ 
+    reportJokes.push({
+      joke,
+      date: new Date(),
+      score
+    })
     console.log(reportJokes)
   }
-  
 })
 
-
+type WeatherResponse ={
+  main:{
+    temp:number;
+  },
+  weather:{
+    description:string;
+    icon:string;
+  }[]
+}
 
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Barcelona&units=metric&apikey=2100050340613191cdf788f92f391040")
   .then(response =>response.json())
-  .then( data => {
-          const degrees= data.main.temp
-          const rounded = Math.floor(degrees)
-          document.querySelector(".degrees").innerHTML = `${rounded} ºC`
-          document.querySelector(".weather-descript").innerHTML = `<img class="icon" src ="http://openweathermap.org/img/wn/${data.weather[0].icon}.png">`
-        })
+  .then( (data:WeatherResponse) => {
+    const degrees= data.main.temp
+    const rounded = Math.floor(degrees)
+    document.querySelector(".degrees").innerHTML = `${rounded} ºC`
+    document.querySelector(".weather-descript").innerHTML = `<img class="icon" src ="http://openweathermap.org/img/wn/${data.weather[0].icon}.png">`
+  })
 
 
 

@@ -6,7 +6,6 @@ function getJoke() {
         "blob4"
     ];
     let randomIndex = Math.floor(Math.random() * blobs.length);
-    console.log(randomIndex);
     if (Math.random() > 0.5) fetch('https://icanhazdadjoke.com/', {
         headers: {
             Accept: "application/json"
@@ -29,7 +28,6 @@ function getJoke() {
 const reportJokes = [];
 let joke;
 let score = 0;
-const date = new Date();
 document.querySelector(".bad").addEventListener("click", function() {
     score = 1;
 });
@@ -43,9 +41,9 @@ document.getElementById("next").addEventListener("click", function() {
     getJoke();
     if (joke) {
         reportJokes.push({
-            joke: joke,
-            date: date.toISOString(),
-            score: score
+            joke,
+            date: new Date(),
+            score
         });
         console.log(reportJokes);
     }
